@@ -1,0 +1,23 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: |
+      go get && go build ./...
+
+ports:
+  - name: Site
+    description: App
+    port: 8080
+    visibility: public
+  - name: Hot reload
+    description: App HMR
+    port: 8082
+    onOpen: notify
+    visibility: public
+
+vscode:
+  extensions:
+    - golang.go
+    - a-h.templ
+    - formulahendry.auto-close-tag
