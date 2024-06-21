@@ -2,9 +2,7 @@ module github.com/idreaminteractive/goreload
 
 go 1.22.2
 
-require (
-	github.com/urfave/cli/v2 v2.27.2
-)
+require github.com/urfave/cli/v2 v2.27.2
 
 require (
 	github.com/a-h/templ v0.2.707
