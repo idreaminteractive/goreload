@@ -1,7 +1,44 @@
 package goreload
 
-import "github.com/idreaminteractive/goreload/internal/commands"
+import (
+	"context"
+	"fmt"
+	"io"
 
-func Reload(reloadServerUrl string) error {
+	"github.com/a-h/templ"
+	"github.com/idreaminteractive/goreload/internal/commands"
+	"github.com/idreaminteractive/goreload/internal/hotreload"
+)
+
+func SendReloadSignal(reloadServerUrl string) error {
 	return commands.SignalReload(reloadServerUrl)
+}
+
+func ReloadComponent(hostUrl string) templ.Component {
+	host, _, err := hotreload.ValidateUrl(hostUrl)
+	if err != nil {
+		panic(err)
+	}
+	url := host + "/hotreload"
+	output := fmt.Sprintf(`
+	<script type="text/javascript">
+
+	(function () {
+		let reloadSrc = window.goreload_reloadSrc || new EventSource("%s");
+		reloadSrc.onmessage = (event) => {
+		  if (event && event.data === "reload") {
+			window.location.reload();
+		  }
+		};
+		window.reloadSrc = reloadSrc;
+	  })();
+
+	</script>
+	`, url)
+
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		_, err := io.WriteString(w, output)
+		return err
+
+	})
 }
