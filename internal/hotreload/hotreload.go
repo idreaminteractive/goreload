@@ -69,7 +69,7 @@ func WithLogger(w *io.Writer) func(*HotReloadServer) {
 func InitHotReloadServer(port int, options ...func(*HotReloadServer)) *HotReloadServer {
 
 	// set a default logger
-	h := newHandler()
+	h := enableCORS(newHandler())
 	hrs := &HotReloadServer{
 		logwriter: &io.Discard,
 		server: &http.Server{
