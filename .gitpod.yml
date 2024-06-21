@@ -19,5 +19,3 @@ ports:
 vscode:
   extensions:
     - golang.go
-    - a-h.templ
-    - formulahendry.auto-close-tag
