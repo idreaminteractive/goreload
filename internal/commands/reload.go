@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/idreaminteractive/go-reload/internal/hotreload"
+	"github.com/idreaminteractive/goreload/internal/hotreload"
 )
 
 func SignalReload(url string) error {

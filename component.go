@@ -6,7 +6,7 @@ import (
 	"io"
 
 	"github.com/a-h/templ"
-	"github.com/idreaminteractive/go-reload/internal/hotreload"
+	"github.com/idreaminteractive/goreload/internal/hotreload"
 )
 
 func ReloadComponent(hostUrl string) templ.Component {

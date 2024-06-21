@@ -5,7 +5,7 @@ package main
 import (
 	"os"
 
-	"github.com/idreaminteractive/go-reload/internal/commands"
+	"github.com/idreaminteractive/goreload/internal/commands"
 	"github.com/urfave/cli/v2"
 )
 

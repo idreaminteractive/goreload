@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/idreaminteractive/go-reload/internal/hotreload"
+	"github.com/idreaminteractive/goreload/internal/hotreload"
 	"github.com/urfave/cli/v2"
 )
 
