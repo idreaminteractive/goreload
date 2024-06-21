@@ -104,10 +104,14 @@ func ValidateUrl(u string) (string, int, error) {
 	if err != nil {
 		return "", 0, err
 	}
-	portNum, err := strconv.Atoi(parsed.Port())
-	if err != nil {
-		return "", 0, err
+	portNum := 8082
+	if parsed.Port() != "" {
+		portNum, err = strconv.Atoi(parsed.Port())
+		if err != nil {
+			return "", 0, err
+		}
 	}
+
 	fullPath := parsed.Scheme + "://" + parsed.Host
 
 	return fullPath, portNum, nil

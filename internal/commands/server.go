@@ -14,7 +14,7 @@ import (
 func Serve(cCtx *cli.Context, hostUrl string) error {
 	host, port, err := hotreload.ValidateUrl(hostUrl)
 	if err != nil {
-		fmt.Fprintf(cCtx.App.ErrWriter, "Invalid host given @ %s\n", hostUrl)
+		fmt.Fprintf(cCtx.App.ErrWriter, "Invalid host given @ %s: %v\n", hostUrl, err)
 		return err
 	}
 
