@@ -7,6 +7,7 @@ import (
 	"github.com/idreaminteractive/goreload/internal/hotreload"
 )
 
+// Send the hot reload signal
 func SignalReload(url string) error {
 	host, _, err := hotreload.ValidateUrl(url)
 	if err != nil {

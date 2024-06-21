@@ -11,6 +11,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// Run the hot reload server
 func Serve(cCtx *cli.Context, hostUrl string) error {
 	host, port, err := hotreload.ValidateUrl(hostUrl)
 	if err != nil {

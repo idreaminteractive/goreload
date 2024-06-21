@@ -1,5 +1,4 @@
-// A custom schema migrator for use with goose migrations.
-// We end up piping to the Deno tooling for now, waiting on libsql go client to git gud.
+// Command interface for running the hot reload server
 package main
 
 import (

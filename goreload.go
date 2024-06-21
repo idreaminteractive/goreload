@@ -10,12 +10,14 @@ import (
 	"github.com/idreaminteractive/goreload/internal/hotreload"
 )
 
+// Programmatically trigger the hot reload for the server running @ reloadServerUrl
 func SendReloadSignal(reloadServerUrl string) error {
 	return commands.SignalReload(reloadServerUrl)
 }
 
-func ReloadComponent(hostUrl string) templ.Component {
-	host, _, err := hotreload.ValidateUrl(hostUrl)
+// Embed the JS to connect to the hot reload server and wait for SSE events @ reloadServerUrl
+func ReloadComponent(reloadServerUrl string) templ.Component {
+	host, _, err := hotreload.ValidateUrl(reloadServerUrl)
 	if err != nil {
 		panic(err)
 	}
