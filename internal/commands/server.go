@@ -13,13 +13,13 @@ import (
 
 // Run the hot reload server
 func Serve(cCtx *cli.Context, hostUrl string) error {
-	host, port, err := hotreload.ValidateUrl(hostUrl)
+	_, port, err := hotreload.ValidateUrl(hostUrl)
 	if err != nil {
 		fmt.Fprintf(cCtx.App.ErrWriter, "Invalid host given @ %s: %v\n", hostUrl, err)
 		return err
 	}
 
-	fmt.Fprintf(cCtx.App.Writer, "Hot reload server starting up @ %s on port %d\n", host, port)
+	fmt.Fprintf(cCtx.App.Writer, "Hot reload server starting up on port %d\n", port)
 
 	// Setup signal handlers.
 	ctx, cancel := context.WithCancel(cCtx.Context)
